@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			Spring总结
+			目的：解决企业应用的复杂性；
+			功能：使用基本的javaBean代替EJB，并提供了更多的企业应用功能；
+			范围：任何的JAVA应用，目前基本上的java项目离不开spring。
+			
+			IOC
+			依赖注入原理，控制反转思想，是一种设计思想而不是技术；就是把设计好的对象交给容器bean（xml或注解）控制，不再是对象里使用new关键字，避免了硬编码所造成的过度程序耦合，实现解耦。
+			
+			AOP
+			动态代理原理、面向切面编程；filter过滤器就是AOP的方法论，对目标方法进行一些处理，比如未调用前、调用后、异常情况的增强处理或添加通知。
+			
+			Bean
+			beans元素是spring配置文件的根元素，bean相当于是一个小工厂，每定义一个bean，就相当于定义一个组件工厂，一个工厂就会实现一个功能；id作为工厂的标识符，class为bean的类的路径。
+			
+			IOC容器对Bean的生命周期
+			1.首先是通过构造器或工厂方法创建bean的实例（ioc容器启动之后不会马上实例相应的bean，只是拿到所有对象的配置信息）
+			2.为bean的属性赋值，关联其他bean的引用
+			3.将bean的实例传递给bean前置处理器 postProcessBeforeInitialization 方法
+			4.调用bean的初始化方法：init-method
+			5.将bean的实例传递给bean后置处理器 postProcessAfterInitialization 方法
+			6.Bean使用
+			7.在容器关闭前，调用bean的销毁方法：destroy-method
+			
+			SpringMVC总结
+			springMVC的运行流程
+			1、在整个SpringMVC框架中，DispatcherServlet（前端控制器）处于核心位置，负责协调和组织：HandlerMapping（处理器映射器）、HandlerAdapter（处理器适配器）、Handler（处理器）、ViewResoler（视图解析器）、JSP - freemaker（视图）
+			来完成请求处理并返回响应的工作
+			  
+			上面是整个springMVC的结构图，当一个客户端发送一个请求springMVC的响应以下流程 
+			
+			struts2是基于filter过滤器开发，基于类；而springMVC是基于servlet开发，基于方法。
+			一个请求发送到服务器时，前端控制器先查看这个请求有没有对应的映射，如果有先进入处理器的适配器，然后让处理器处理这个请求，处理结果再转给视图解析器进行生成页面。
+			
+			MyBatis总结
+			mybatis是一个支持普通SQL查询、存储过程、高级映射的优秀持久层框架。
+			MyBatis消除了几乎所有的JDBC代码和参数和手工设置以及对结果集的检索封装。MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和java的POJO映射成数据库中的记录
+			
+			架构示意图
+			
+			
+			运行流程
+			1、 mybatis配置
+			SqlMapConfig.xml，此文件作为mybatis的全局配置文件，配置了mybatis的运行环境等 信息。mapper.xml文件即sql映射文件，文件中配置了操作数据库的sql语句。此文件 需要在SqlMapConfig.xml中加载。
+			2、 通过mybatis环境等配置信息构造SqlSessionFactory即会话工厂
+			3、 由会话工厂创建sqlSession即会话，操作数据库需要通过sqlSession进行。
+			4、 mybatis底层自定义了Executor执行器接口操作数据库，Executor接口有两个实现，一个是基本执行器、一个是缓存执行器。
+			5、 Mapped Statement也是mybatis一个底层封装对象，它包装了mybatis配置信息及sql映射信息等。mapper.xml文件中一个sql对应一个Mapped Statement对象，sql的id即是Mapped statement的id。
+			6、 Mapped Statement对sql执行输入参数进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql前将输入的java对象映射至sql中，输入参数映射就是jdbc编程中对preparedStatement设置参数。
+			7、 Mapped Statement对sql执行输出结果进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql后将输出结果映射至java对象中，输出结果映射过程相当于jdbc编程中对结果的解析处理过程。
+
+		</p>
+	</body>
+</html>
